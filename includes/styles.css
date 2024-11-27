@@ -1,0 +1,32 @@
+body{
+    background-color: black !important;
+    color: white !important;
+}
+
+
+/* Registration form */
+.big_form{
+    height: 75%;
+    width: 75%;
+    padding: 50px;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: 1px solid white ;
+    background-color: rgb(172, 172, 172, 0.4);
+    border-radius: 30px;
+    border-right: 0;
+    border-left: 0;
+}
+
+
+/* footer */
+#footer {
+	border-top:1px solid #999; 
+	height:50px;
+	margin:0 auto;
+	padding:10px;
+	text-align:center;
+	width:751px;
+}
+
+

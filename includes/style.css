@@ -95,15 +95,6 @@ body {
 	padding:20px 20px 0;
 }
 
-/* footer */
-#footer {
-	border-top:1px solid #999; 
-	height:50px;
-	margin:0 auto;
-	padding:10px;
-	text-align:center;
-	width:751px;
-}
 
 /* Added by Larry Ullman: */
 .error, .ad {
@@ -119,3 +110,4 @@ input, select, .input {
 	background: #FFFFFF;
 	border:1px dotted #004080;
 }
+
