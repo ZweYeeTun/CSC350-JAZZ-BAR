@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Schedule</h1>
+
+     
+        <div id="termsSection" class="mb-5" style="display: none;">
+            <h4>Welcome, Musicians!</h4>
+            <p>Thank you for contributing to our Jazz Bar. Please review and accept the following terms and conditions before proceeding:</p>
+            <ul>
+                <li>Respect the schedule availability and avoid unnecessary changes.</li>
+                <li>Confirm your slots promptly and communicate in case of cancellations.</li>
+                <li>Adhere to the agreed regulations for performances.</li>
+            </ul>
+            <div class="form-check">
+                <input type="checkbox" id="acceptTerms" class="form-check-input">
+                <label for="acceptTerms" class="form-check-label">I accept the terms and conditions</label>
+            </div>
+            <button id="proceedButton" class="btn btn-primary mt-3" disabled onclick="showLogin()">Proceed</button>
+        </div>
+
+        
+        <div id="musicianLoginSection" class="mb-5" style="display: none;">
+            <h4>Please Enter Your Details</h4>
+            <form id="musicianLoginForm">
+                <div class="mb-3">
+                    <label for="musicianName" class="form-label">Name</label>
+                    <input type="text" id="musicianName" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="musicianDOB" class="form-label">Date of Birth</label>
+                    <input type="date" id="musicianDOB" class="form-control" required>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="loginMusician()">Submit</button>
+            </form>
+        </div>
+
+       
+        <div id="adminSection" class="mb-5" style="display: none;">
+            <h4>Manage Schedule</h4>
+            <form id="addScheduleForm">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="newDate" class="form-label">Date</label>
+                        <input type="date" id="newDate" class="form-control" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="newTime" class="form-label">Time</label>
+                        <input type="time" id="newTime" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="newStatus" class="form-label">Status</label>
+                        <select id="newStatus" class="form-select" required>
+                            <option value="Available">Available</option>
+                            <option value="Taken">Taken</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="newName" class="form-label">Name (Optional)</label>
+                        <input type="text" id="newName" class="form-control">
+                    </div>
+                </div>
+                <div class="form-check mt-3">
+                    <input type="checkbox" id="allDayCheckbox" class="form-check-input">
+                    <label for="allDayCheckbox" class="form-check-label">All Day Unavailable</label>
+                </div>
+                <button type="button" onclick="addSchedule()" class="btn btn-primary mt-3">Add to Schedule</button>
+            </form>
+        </div>
+
+       
+        <div id="scheduleTableContainer" style="display: none;">
+            <h4 id="scheduleHeader" class="mb-3"></h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Name</th>
+                        <th id="adminActionsHeader" style="display: none;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleTable">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let loggedInMusician = null;
+
+       
+        function getUserRoleFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const role = params.get("role") || "Musician"; 
+            localStorage.setItem("userRole", role);
+            return role;
+        }
+
+        const userRole = getUserRoleFromURL();
+
+        
+        document.getElementById("acceptTerms").addEventListener("change", function () {
+            document.getElementById("proceedButton").disabled = !this.checked;
+        });
+
+        function showLogin() {
+            document.getElementById("termsSection").style.display = "none";
+            document.getElementById("musicianLoginSection").style.display = "block";
+        }
+
+        function initializeSchedule() {
+            if (!localStorage.getItem("schedule")) {
+                const defaultSchedule = [
+                    { date: "2024-11-20", time: "8:00 PM", status: "Available", reservedBy: null, name: null },
+                    { date: "2024-11-21", time: "9:00 PM", status: "Taken", reservedBy: "Smith-1990-01-01", name: "John Smith" },
+                    { date: "2024-11-22", time: "The Bar is Closed", status: "Unavailable", reservedBy: null, name: null },
+                ];
+                localStorage.setItem("schedule", JSON.stringify(defaultSchedule));
+            }
+        }
+
+        function loadSchedule() {
+            const scheduleData = JSON.parse(localStorage.getItem("schedule")) || [];
+            const scheduleTable = document.getElementById("scheduleTable");
+            const scheduleHeader = document.getElementById("scheduleHeader");
+
+            scheduleTable.innerHTML = "";
+            scheduleHeader.innerText =
+                userRole === "Admin"
+                    ? "Schedule"
+                    : "Schedule";
+
+            scheduleData.forEach((slot, index) => {
+                const isReservedByMusician = loggedInMusician && slot.reservedBy === loggedInMusician;
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${slot.date}</td>
+                    <td>${slot.time}</td>
+                    <td class="${getClass(slot.status)}">
+                        <button class="btn ${getButtonClass(slot.status)}" ${
+                    slot.time === "The Bar is Closed" || slot.status === "Unavailable"
+                        ? "disabled"
+                        : userRole === "Musician" && slot.status === "Available"
+                        ? `onclick="toggleStatus(${index})"`
+                        : userRole === "Musician" && isReservedByMusician
+                        ? `onclick="toggleStatus(${index})"`
+                        : "disabled"
+                }>${slot.status}</button>
+                    </td>
+                    <td>${slot.name || "N/A"}</td>
+                    <td ${
+                    userRole === "Admin"
+                        ? ""
+                        : 'style="display: none;"'
+                }>
+                        <button class="btn btn-danger btn-sm" onclick="deleteSchedule(${index})">Delete</button>
+                    </td>
+                `;
+                scheduleTable.appendChild(row);
+            });
+
+            document.getElementById("scheduleTableContainer").style.display = "block";
+        }
+
+        function loginMusician() {
+            const name = document.getElementById("musicianName").value.trim();
+            const dob = document.getElementById("musicianDOB").value;
+
+            if (!name || !dob) {
+                alert("Please enter your Name and Date of Birth.");
+                return;
+            }
+
+            loggedInMusician = `${name}-${dob}`;
+            document.getElementById("musicianLoginSection").style.display = "none";
+            loadSchedule();
+        }
+
+        function addSchedule() {
+            if (userRole !== "Admin") return;
+
+            const date = document.getElementById("newDate").value;
+            let time = document.getElementById("newTime").value;
+            const status = document.getElementById("newStatus").value;
+            const name = document.getElementById("newName").value.trim() || null;
+            const isAllDay = document.getElementById("allDayCheckbox").checked;
+
+            if (isAllDay) {
+                time = "The Bar is Closed";
+            }
+
+            if (!date || (!time && !isAllDay) || !status) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            const scheduleData = JSON.parse(localStorage.getItem("schedule")) || [];
+            scheduleData.push({ date, time, status, reservedBy: null, name });
+            localStorage.setItem("schedule", JSON.stringify(scheduleData));
+            loadSchedule();
+            document.getElementById("addScheduleForm").reset();
+        }
+
+        function deleteSchedule(index) {
+            if (userRole !== "Admin") return;
+
+            const scheduleData = JSON.parse(localStorage.getItem("schedule")) || [];
+            scheduleData.splice(index, 1);
+            localStorage.setItem("schedule", JSON.stringify(scheduleData));
+            loadSchedule();
+        }
+
+        function toggleStatus(index) {
+            const scheduleData = JSON.parse(localStorage.getItem("schedule")) || [];
+            const slot = scheduleData[index];
+
+            if (slot.status === "Available") {
+                slot.status = "Taken";
+                slot.reservedBy = loggedInMusician;
+                slot.name = loggedInMusician.split('-')[0];
+            } else if (slot.status === "Taken" && slot.reservedBy === loggedInMusician) {
+                slot.status = "Available";
+                slot.reservedBy = null;
+                slot.name = null;
+            }
+
+            localStorage.setItem("schedule", JSON.stringify(scheduleData));
+            loadSchedule();
+        }
+
+        function getClass(status) {
+            if (status === "Available") return "text-success";
+            if (status === "Taken") return "text-danger";
+            return "text-muted";
+        }
+
+        function getButtonClass(status) {
+            if (status === "Available") return "btn-success";
+            if (status === "Taken") return "btn-danger";
+            return "btn-secondary";
+        }
+
+        window.onload = function () {
+            initializeSchedule();
+            if (userRole === "Admin") {
+                document.getElementById("adminSection").style.display = "block";
+                document.getElementById("adminActionsHeader").style.display = "table-cell";
+                loadSchedule();
+            } else {
+                document.getElementById("termsSection").style.display = "block";
+            }
+        };
+    </script>
+</body>
+</html>

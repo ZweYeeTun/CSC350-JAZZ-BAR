@@ -1,0 +1,18 @@
+body{
+    background-color: black !important;
+    color: white !important;
+}
+
+.big_form{
+    height: 75%;
+    width: 75%;
+    padding: 50px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: 1px solid white ;
+    background-color: rgb(172, 172, 172, 0.4);
+    border-radius: 30px;
+    border-right: 0;
+    border-left: 0;
+}
