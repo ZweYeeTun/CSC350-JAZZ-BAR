@@ -17,5 +17,11 @@
         </section>
     </div>
 </div>
-
+<audio id="player" autoplay loop>
+    <source src="Moanin.mp3"  type="audio/mp3">
+</audio>
+<script>
+    let audio=document.getElementById("player");
+    audio.volume =0.2;
+</script>
 <?php include 'includes/footer.html'; ?>
