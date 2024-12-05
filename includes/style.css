@@ -3,14 +3,14 @@
 	Email		:	christopher@edg3.co.uk
 	Website	:	http://www.edg3.co.uk/
 */
-* {
+/* * {
 	border:0;
 	margin:0;
 	padding:0;
-}
+} */
 
 /* general */
-a {
+/* a {
 	color:#777;
 	text-decoration:none;
 }
@@ -18,17 +18,17 @@ a {
 a:hover {
 	color:#333;
 	text-decoration:none;
-}
+} */
 
 /* body */
-body {
+/* body {
 	background:#ffffff;
 	color:#555;
 	font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif;
-}
+} */
 
 /* header */
-#header {
+/* #header {
 	border-bottom:1px solid #999;
 	height:80px;
 	margin:0 auto;
@@ -47,10 +47,10 @@ body {
 	font-size:200%;
 	letter-spacing:-2px;
 	text-align:right;
-}
+} */
 
 /* navigation */
-#navigation {
+/* #navigation {
 	background:#fafafa;
 	border-right:1px solid #999;
 	margin:0 auto;
@@ -77,10 +77,10 @@ body {
 #navigation .active {
 	background:#e3e3e3;
 	color:#777;
-}
+} */
 
 /* content */
-#content {
+/* #content {
 	height:auto;
 	margin:0 auto;
 	padding:0 0 20px;
@@ -93,11 +93,11 @@ body {
 }
 #content p {
 	padding:20px 20px 0;
-}
+} */
 
 
 /* Added by Larry Ullman: */
-.error, .ad {
+/* .error, .ad {
 	font-weight: bold;
 	color: #C00
 }
@@ -109,5 +109,5 @@ input, select, .input {
 	color: #008040;
 	background: #FFFFFF;
 	border:1px dotted #004080;
-}
+} */
 
