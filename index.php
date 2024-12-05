@@ -1,8 +1,19 @@
-<?php # Script 3.4 - index.php
-$page_title = 'Welcome to this Site!';
-include ('./includes/header.html');
-?>
+<?php include 'includes/header.html'; ?>
 
-<?php
-include ('./includes/footer.html');
-?>
+<div class="containerA">
+    <div class="announcement">
+        <section class="announce">
+            <h1>Announcements</h1>
+        </section>
+
+        <section class="info">
+            <p>Show Date & Musicians</p>
+        </section>
+
+        <section class="title">
+            <p>10:30pm Monday THE GIGGOLOS</p>
+        </section>
+    </div>
+</div>
+
+<?php include 'includes/footer.html'; ?>
