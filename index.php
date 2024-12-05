@@ -1,4 +1,6 @@
-<?php include 'includes/header.html'; ?>
+<?php $page_title = 'Home';
+ include 'includes/header.html'; 
+ ?>
 
 <div class="containerA">
     <div class="announcement">
