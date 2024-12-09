@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$p = mysqli_real_escape_string($dbc, trim($_POST['pass']));
 	}
     if(empty($errors)){
-        $adminQuery = "SELECT * FROM users WHERE email = '$email' AND pass = '$password'";
+        $adminQuery = "SELECT * FROM admins WHERE email = '$email' AND pass = '$password'";
         echo $adminQuery;
     $adminResult = $dbc->query($adminQuery);
 
