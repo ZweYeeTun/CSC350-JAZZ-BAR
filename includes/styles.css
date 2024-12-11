@@ -8,6 +8,16 @@
     src: url("Notable-Regular.ttf");
 }
 
+@font-face {
+    font-family: 'yasashii_bold';
+    src: url("yasashii-w01-bold.ttf");
+}
+
+@font-face {
+    font-family: 'Neutraface';
+    src: url("NeutrafaceTextBold.otf");
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -17,7 +27,7 @@
 body{
     background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%)!important;
     color: white !important;
-    font-family: "notable" !important;
+    font-family: "Neutraface" !important;
 
 }
 
@@ -51,7 +61,7 @@ body{
 
     text-decoration: none;
     color: #0456b4;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .navi_link:hover{
@@ -84,7 +94,8 @@ body{
 }
 
 .navbar .jazz a{
-    font-size: 1.5rem;
+    font-family: 'yasashii_bold';
+    font-size: 50px;
     font-weight: bold;
 }
 
@@ -103,7 +114,7 @@ body{
 .containerA{
     justify-content: center;
     align-items: center;
-    animation: scale-up 2.5s linear;
+    animation: scale-up 0.9s linear;
 
 }
 
@@ -116,7 +127,7 @@ body{
     color: black;
     border: 1px solid white;
     transform: rotate(-5deg);
-    animation: rotate 0.5s linear 5;
+    animation: rotate 0.2s linear 5;
     position: relative;
 }
 
