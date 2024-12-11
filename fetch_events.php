@@ -1,4 +1,5 @@
 <?php
+
 require ('../ch09/mysqli_connect.php');
 $result = $dbc->query("SELECT id, event_date, artist_name, event_time , available_tickets FROM events");
 $events = [];

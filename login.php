@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 } // End of the main Submit conditional.
 ?>
-<h1>Change Your Password</h1>
+<h1>Login with your respective credentials</h1>
 <form action="login.php" method="post">
 	<p>Email Address: <input type="text" name="email" size="20" maxlength="60" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"  /> </p>
 	<p> Password: <input type="password" name="pass" size="10" maxlength="20" value="<?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>"  /></p>

@@ -45,6 +45,34 @@
         </tbody>
     </table>
 
+    <h1>Manage Announcement</h1>
+
+    <!-- Form to Update Announcement -->
+    <form id="announcementForm">
+        <label for="announcement_title">Title:</label>
+        <input type="text" id="announcement_title" name="announcement_title" required><br><br>
+
+        <label for="announcement_description">Description:</label>
+        <textarea id="announcement_description" name="announcement_description" required></textarea><br><br>
+
+        <button type="submit">Save Announcement</button>
+    </form>
+
+    <h2>Current Announcement</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="announcementTableBody">
+            <!-- Dynamically populated -->
+        </tbody>
+    </table>
+
+
     <script>
         // Function to fetch events
         async function fetchEvents() {
@@ -102,9 +130,63 @@
                 fetchEvents(); // Refresh the table
             }
         }
+        fetchEvents();
+
+
+
+
+          // Function to fetch the announcement
+          async function fetchAnnouncement() {
+            try {
+                const response = await axios.get('fetch_announcement.php');
+                const announcements= response.data;
+
+                // Populate the table with the single announcement
+                announcements.forEach(announcement => {const announcementTableBody = document.getElementById('announcementTableBody');
+                announcementTableBody.innerHTML = '';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${announcement.title}</td>
+                    <td>${announcement.description}</td>
+                    <td>
+                        <button onclick="editAnnouncement('${announcement.title}', '${announcement.description}')">Edit</button>
+                    </td>
+                `;
+                announcementTableBody.appendChild(row);
+                    
+                });
+                
+            } catch (error) {
+                console.error('Error fetching announcement:', error);
+            }
+        }
+
+        // Function to handle form submission
+        document.getElementById('announcementForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            try {
+                const response = await axios.post('manage_announcement.php', formData);
+                alert(response.data.message);
+                fetchAnnouncement(); // Refresh the table
+                this.reset();
+            } catch (error) {
+                console.error('Error saving announcement:', error);
+            }
+        });
+
+        // Function to edit an announcement
+        function editAnnouncement(title, description) {
+            document.getElementById('announcement_title').value = title;
+            document.getElementById('announcement_description').value = description;
+        }
+
+        // Fetch the announcement on page load
+        fetchAnnouncement();
 
         // Fetch events on page load
-        fetchEvents();
+       
     </script>
 </body>
 </html>

@@ -6,11 +6,8 @@
 <div class="containerA">
     <div class="announcement">
         <section class="announce">
-            <h1>Announcements</h1>
-        </section>
 
-        <section class="info">
-            <p>Show Date & Musicians</p>
+            <marquee id="announcements"></marquee>
         </section>
 
         <section class="title">
@@ -53,8 +50,57 @@
                 eventsTableBody.appendChild(row);
             });
         }
-        // Fetch events on page load
+        async function fetchAnnouncements() {
+    try {
+        // Fetch data from the backend
+        const response = await axios.get('fetch_announcement.php');
+        const announcements = response.data;
+
+        // Get the table body where announcements will be displayed
+        const announcementsTableBody = document.getElementById('announcements');
+        announcementsTableBody.innerHTML = '';
+
+        // Loop through the announcements and create table rows
+        announcements.forEach(announcement => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <th>${announcement.title}   </th>
+                &nbsp;
+                &nbsp;
+                <td>${announcement.description}</td>
+            `;
+            announcementsTableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error fetching announcements:', error);
+    }
+}
+
+
+
+
+       
+    // fetch('fetch_announcement.php')
+    //        .then(response => response.json())
+    //         .then(data => {
+    //            const announcementsDiv = document.getElementById('announcements');
+
+    //             Populate the announcements
+    //             data.forEach(announcement => {
+    //                const announcementDiv = document.createElement('div');
+    //                 announcementDiv.classList.add('announcement');
+    //                announcementDiv.innerHTML = `
+    //                    <h2>${announcement.title}</h2>
+    //                    <p>${announcement.description}</p>
+    //                     <sma//ll>${new Date(announcement.date).toLocaleDateString()}</small>
+    //                 `;
+    //                announcementsDiv.appendChild(announcementDiv);
+    //             });
+    //         })
+    //         .catch(error => console.error('Error fetching announcements:', error))
+        //Fetch events on page load
         fetchEvents();
+        fetchAnnouncements();
     </script>
 
         </section>
