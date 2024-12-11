@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
     if(empty($errors)){
         $adminQuery = "SELECT * FROM admins WHERE email = '$email' AND pass = '$password'";
-        echo $adminQuery;
     $adminResult = $dbc->query($adminQuery);
 
     // Query to check in the 'musician' table
