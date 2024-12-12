@@ -134,32 +134,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				<!-- Name input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="text" id="registerFirstName" class="form-control" />
-					<label class="form-label" for="registerFirstName">First
+					<input type="text" id="registerFirstName" class="form-control inp" />
+					<label class="form-label inp" for="registerFirstName">First
 						Name</label><?php if (isset($_POST['first_name']))
 							echo $_POST['first_name']; ?></p>
 				</div>
 
 				<!-- Username input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="text" id="registerLastname" class="form-control" />
-					<label class="form-label" for="registerLastname">Last
+					<input type="text" id="registerLastname" class="form-control inp" />
+					<label class="form-label inp" for="registerLastname">Last
 						Name</label><?php if (isset($_POST['last_name']))
 							echo $_POST['last_name']; ?></p>
 				</div>
 
 				<!-- Email input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="email" id="registerEmail" class="form-control" />
-					<label class="form-label"
+					<input type="email" id="registerEmail" class="form-control inp" />
+					<label class="form-label inp"
 						for="registerEmail">Email</label><?php if (isset($_POST['email']))
 							echo $_POST['email']; ?> </p>
 				</div>
 
 				<!-- Password input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="password" id="registerPassword" class="form-control" />
-					<label class="form-label"
+					<input type="password" id="registerPassword" class="form-control inp" />
+					<label class="form-label inp"
 						for="registerPassword">Password</label><?php if (isset($_POST['pass1']))
 							echo $_POST['pass1']; ?> </p>
 				</div>
@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<!-- Repeat Password input -->
 				<div data-mdb-input-init class="form-outline mb-4">
 					<input type="password" id="registerRepeatPassword" class="form-control" />
-					<label class="form-label" for="registerRepeatPassword">Repeat
+					<label class="form-label inp" for="registerRepeatPassword">Repeat
 						password</label><?php if (isset($_POST['pass2']))
 							echo $_POST['pass2']; ?> </p>
 				</div>

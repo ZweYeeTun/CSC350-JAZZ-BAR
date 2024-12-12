@@ -167,6 +167,10 @@ body{
     padding: 10px 5px;
 }
 
+.inp{
+    color: black !important;
+}
+
 @keyframes rotate{
 
     0%{transform: rotate(0deg);}
