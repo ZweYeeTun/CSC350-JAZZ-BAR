@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 } // End of the main Submit conditional.
 ?>
-<h1>Admin Registerations</h1>
+<h1 class="headline">Admin Registerations</h1>
 
 <form action="register3.php" method="post" class="big_form">
 		<div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
