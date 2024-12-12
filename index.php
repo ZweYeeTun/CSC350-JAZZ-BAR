@@ -105,8 +105,14 @@
 
         </section>
     </div>
+    <audio id="player" autoplay loop>
+    <source src="deepinit.mp3"  type="audio/mp3">
+</audio>
 </div>
-
+<script>
+    let audio = document.getElementById("player");
+    audio.volume = 0.2;
+</script>
 <?php include 'includes/footer.html'; ?>
 
    

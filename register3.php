@@ -123,49 +123,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 				<!-- Name input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="text" name="first_name" size="15" maxlength="20" id="registerFirstName" class="form-control" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>"  />
-					<label class="form-label" for="registerFirstName">First
-						Name</label>
+					<input type="text" id="registerFirstName" class="form-control inp" />
+					<label class="form-label inp" for="registerFirstName">First
+						Name</label><?php if (isset($_POST['first_name']))
+							echo $_POST['first_name']; ?></p>
 				</div>
 
 				<!-- Username input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="text" name="last_name" size="15" maxlength="40"  id="registerLastname" class="form-control" value="<?php if (isset($_POST['last_name']))
-							echo $_POST['last_name']; ?>" />
-					<label class="form-label" for="registerLastname">Last
-						Name</label>
+					<input type="text" id="registerLastname" class="form-control inp" />
+					<label class="form-label inp" for="registerLastname">Last
+						Name</label><?php if (isset($_POST['last_name']))
+							echo $_POST['last_name']; ?></p>
 				</div>
 
 				<!-- Email input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="email"  name="email" size="20" maxlength="60" id="registerEmail" class="form-control" value="<?php if (isset($_POST['email']))
-							echo $_POST['email']; ?>" />
-					<label class="form-label"
-						for="registerEmail">Email</label>
+					<input type="email" id="registerEmail" class="form-control inp" />
+					<label class="form-label inp"
+						for="registerEmail">Email</label><?php if (isset($_POST['email']))
+							echo $_POST['email']; ?> </p>
 				</div>
 
 				<!-- Password input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="password"  name="pass1" size="10" maxlength="20" id="registerPassword" class="form-control" <?php if (isset($_POST['pass1']))
-							echo $_POST['pass1']; ?> />
-					<label class="form-label"
-						for="registerPassword">Password</label>
+					<input type="password" id="registerPassword" class="form-control inp" />
+					<label class="form-label inp"
+						for="registerPassword">Password</label><?php if (isset($_POST['pass1']))
+							echo $_POST['pass1']; ?> </p>
 				</div>
 
 				<!-- Repeat Password input -->
 				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="password" name="pass2" size="10" maxlength="20" id="registerRepeatPassword" class="form-control"  <?php if (isset($_POST['pass2']))
-							echo $_POST['pass2']; ?> />
-					<label class="form-label" for="registerRepeatPassword">Repeat
-						password</label>
-				</div>
-				<!-- Key -->
-				<div data-mdb-input-init class="form-outline mb-4">
-					<input type="password" name="pass3" size="10" maxlength="20" id="registerRepeatPassword" class="form-control"  <?php if (isset($_POST['pass2']))
-							echo $_POST['pass3']; ?> />
-					<label class="form-label" for="registerRepeatPassword">Security Key
-
-					</label>
+					<input type="password" id="registerRepeatPassword" class="form-control" />
+					<label class="form-label inp" for="registerRepeatPassword">Repeat
+						password</label><?php if (isset($_POST['pass2']))
+							echo $_POST['pass2']; ?> </p>
 				</div>
 				
 
