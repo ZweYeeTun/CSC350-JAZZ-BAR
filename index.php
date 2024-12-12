@@ -79,13 +79,40 @@ include 'includes/header.html';
             </script>
 
         </section>
+        <div class="music">
+        <div class="musicOn">
+            <audio id="player" autoplay loop>
+                <source src="deepinit.mp3" type="audio/mp3">
+            </audio>
+        </div>
+        <div class="tgl-btn1">
+            <a class="tgl-btn2" href="#"><i class="fa-solid fa-volume-xmark"></i></a>
+        </div>
     </div>
-    <audio id="player" autoplay loop>
-        <source src="deepinit.mp3" type="audio/mp3">
-    </audio>
+    </div>
+    
 </div>
 <script>
     let audio = document.getElementById("player");
     audio.volume = 0.2;
+
+    let on_off = document.querySelector('.tgl-btn1 .tgl-btn2');
+    let audio1 = document.querySelector('.musicOn audio');
+
+    on_off.onclick = function () {
+        audio1.paused ? audio1.play() : audio1.pause();
+    }
+
+    // let btn = document.querySelector(".tgl-btn2");
+    // let icon = btn.querySelector("fa-volume-xmark");
+
+    // btn.onclick = function () {
+    //     if (icon.classList.contains("fa-volume-xmark")) {
+    //         icon.classList.replace("fa-volume-xmark", "fa-volume-high");
+    //     }
+    //     else {
+    //         icon.classList.replace("fa-volume-high", "fa-volume-xmark");
+    //     }
+    // }
 </script>
 <?php include 'includes/footer.html'; ?>
