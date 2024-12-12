@@ -26,7 +26,7 @@ events
 ON 
 tickets.event_id = events.id
  WHERE tickets.first_name = ? AND tickets.email = ?;";
- $stmt = $dbc->prepare($sql);
+$stmt = $dbc->prepare($sql);
 
 //$stmt = $dbc->prepare("SELECT * FROM tickets WHERE first_name = ? AND email = ?");
 $stmt->bind_param("ss", $first_name, $email);

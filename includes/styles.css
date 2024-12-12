@@ -171,6 +171,10 @@ body{
     color: black !important;
 }
 
+.tb{
+    width: 790px;
+}
+
 @keyframes rotate{
 
     0%{transform: rotate(0deg);}
@@ -203,3 +207,4 @@ body{
     }
 
 }
+
