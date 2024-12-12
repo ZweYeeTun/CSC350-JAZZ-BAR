@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } // End of the main Submit conditional.
 ?>
 <!-- <h1>Change Your Password</h1> -->
-<form action="" class="big_form">
+<form action="login.php"method="post" class="big_form">
         <!-- Pills navs -->
         <!-- <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
             <li class="nav-item" role="presentation">
@@ -119,14 +119,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     <!-- Email input -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="email" id="loginName" class="form-control inp" />
-                        <label class="form-label inp" for="loginName">Email address</label><?php if (isset($_POST['email'])) echo $_POST['email']; ?>
+                    <input type="text" name="email" size="20" maxlength="60" id="loginName" class="form-control inp" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"  />
+                        <label class="form-label inp" for="loginName">Email address</label>
                     </div>
 
                     <!-- Password input -->
                     <div data-mdb-input-init class="form-outline mb-4">
-                        <input type="password" id="loginPassword" class="form-control inp" />
-                        <label class="form-label inp" for="loginPassword">Password</label><?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>
+                    <input type="password" name="pass" size="10" maxlength="20" id="loginPassword" class="form-control inp" value="<?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>"  />
+                        <label class="form-label inp" for="loginPassword">Password</label>
                     </div>
 
                     <!-- 2 column grid layout -->
@@ -146,8 +146,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                        class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                    <input  type="submit" name="submit" value="Login" 
+                class="btn btn-primary btn-block mb-3"  />
+    
 
                     <!-- Register buttons -->
                     <div class="text-center">
