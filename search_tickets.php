@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Tickets</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
-    <h1>Search for Tickets</h1>
+<?php $page_title = 'buytickets';
+include 'includes/header.html';
+?>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <h1 class="search_tickets">Search for Tickets</h1>
     
     <!-- Form to Input First Name and Email -->
     <form id="searchForm">
@@ -20,8 +15,8 @@
         <button type="submit">Search</button>
     </form>
 
-    <h2>Tickets</h2>
-    <table border="1">
+    <h2 class="ticket_head">Tickets</h2>
+    <table class="ticket_info" >
         <thead>
             <tr>
                 <th>First Name</th>
@@ -104,5 +99,4 @@ document.getElementById('searchForm').addEventListener('submit', async function 
 
 
     </script>
-</body>
-</html>
+<?php include 'includes/footer.html'; ?>

@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'jazz_clubregular';
+    src: url("Jazz_Club.ttf");
+}
+
+@font-face {
+    font-family: 'notable';
+    src: url("Notable-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'yasashii_bold';
+    src: url("yasashii-w01-bold.ttf");
+}
+
+@font-face {
+    font-family: 'Neutraface';
+    src: url("NeutrafaceTextBold.otf");
+}
+
+body{
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%)!important;
+    color: white !important;
+    font-family: "Neutraface" !important;
+
+}
+
+.search_tickets{
+    margin-left: 530px;
+}
+
+
+#searchForm{
+    width: 50%;
+    padding: 50px;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: 1px solid white ;
+    background-color: rgb(172, 172, 172, 0.4);
+    border-radius: 30px;
+    border-right: 0;
+    border-left: 0;
+}
+
+#searchForm input{
+    border-radius: 10px;
+    width: 50%;
+    border: none;
+}
+
+#searchForm button{
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    color: #2483f0;
+    font-size: 1.5rem;
+}
+
+#searchForm button:hover{
+    color: white;
+    text-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 6px #fff,
+      0 0 15px #2483f0,
+      0 0 23px #2483f0,
+      0 0 36px #2483f0,
+      0 0 42px #2483f0,
+      0 0 67px #2483f0,
+      0 0 81px #2483f0;
+}
+
+.ticket_head{
+    padding-top: 15px;
+    margin-left: 530px;
+}
+
+.ticket_info{
+    margin: auto;
+    width: 50%;
+    background-color:whitesmoke;
+    color: black;
+}
+
+.ticket_info th{
+    padding: 15px;
+    border-bottom: 1px solid black;
+}
+
+.ticket_info td {
+    border-bottom: 1px solid black;
+    padding: 15px 0 15px 0;
+}

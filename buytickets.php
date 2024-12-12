@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket Booking</title>
-</head>
-<body>
-    <h1>Buy Tickets</h1>
-    <form action="process_ticket.php" method="POST">
+<?php $page_title = 'buytickets';
+include 'includes/header.html';
+?>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <h1 class="header_ticket">Buy Tickets</h1>
+    <form class="ticket-form" action="process_ticket.php" method="POST">
         <!-- Customer Details -->
         <label for="first_name">First Name:</label>
         <input type="text" id="first_name" name="first_name" required><br><br>
@@ -91,5 +88,5 @@
 
         loadEvents();
     </script>
-</body>
-</html>
+
+<?php include 'includes/footer.html'; ?>
